@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
             fprintf(fout, "(%d,SYMC,\"%s\")\n", yylineno, yytext);
             break;
 	 case STRING:
-            fprintf(fout, "(%d,STRING,\"%s\")\n", yylineno, yytext);
+            fprintf(fout, "(%d,STR,\"%s\")\n", yylineno, yytext);
             break;
         }
     }
