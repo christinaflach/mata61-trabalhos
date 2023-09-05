@@ -1,4 +1,3 @@
-array  
 boolean  
 else  
 false  
@@ -7,6 +6,7 @@ if
 integer  
 print  
 return  
+string
 true  
 void   
 while

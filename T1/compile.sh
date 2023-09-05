@@ -1,29 +1,29 @@
 #!/bin/bash
 # no parameters
-# add your Flex code to scr/bminus.l
-# you don't need to modify src/bminus.y nor src/token.h
+# add your Flex code to scr/blite.l
+# you don't need to modify src/blite.y
 # do NOT change src/main.c
 
 T1=$(pwd)
 
 # run inside src
 cd src
-bison -d bminus.y
+bison -d blite.y
 
 # rename file 
-mv bminus.tab.h token.h
+mv blite.tab.h token.h
 
-flex bminus.l           
+flex blite.l           
 
-cc -o bminus lex.yy.c bminus.tab.c main.c
+cc -o bminus lex.yy.c blite.tab.c main.c
 
-# change bminus to exec and move it to T1
-chmod +x bminus 
-mv bminus "$T1"
+# change blite to exec and move it to T1
+chmod +x blite
+mv blite "$T1"
 
 # clean
 rm lex.yy.c
-rm bminus.tab.c
+rm blite.tab.c
 
 # back to T1
 cd "$T1"

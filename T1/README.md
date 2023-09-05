@@ -3,10 +3,10 @@
 ## Trabalho 1 (T1): Análise Léxica
 
 Nesta parte do projeto, você irá implementar um analisador léxico
-para a [linguagem BLite](../BLite/MANUAL.md).
+para a [linguagem B-Lite](../B-Lite/MANUAL.md).
 
 O analisador léxico do trabalho T1 deve receber como entrada 
-um programa fonte em BLite e retornar um sequência _tokens_, 
+um programa fonte em B-Lite e retornar um sequência _tokens_, 
 um a um, cada _token_ anotado com as seguintes informações:
 - classe do _token_ (identificador, constante inteira, símbolo, etc)
 - lexema do _token_ (cadeia de caracteres), 
@@ -41,7 +41,7 @@ Comentários e caracteres de espacejamento (_white space_) devem ser descartados
 ## Entrada
 
 O analisador léxico deverá ler um arquivo de entrada (com extensão _.bm_),
-contendo um programa fonte em BLite.
+contendo um programa fonte em B-Lite.
 
 ```
 // main.bm 

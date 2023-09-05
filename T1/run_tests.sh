@@ -1,7 +1,7 @@
 #!/bin/bash
 # no parameter
 # requires dirs: tests/inputs, tests/oracle, tests/outputs
-# requires program "bminus" -- your lexer.
+# requires program "blite" -- your lexer.
 
 T1=$(pwd)
 tests="$T1/tests"
@@ -15,17 +15,17 @@ function total_files {
         find $1 -type f | wc -l
 }
 
-echo "T1 - 2023.1"
+echo "T1 - 2023.2"
 echo
 
-# Build your B- lexer using the compile.sh script
-echo "- Compiling bminus lexer ..."
+# Build your B-Lite lexer using the compile.sh script
+echo "- Compiling blite lexer ..."
 $($T1/compile.sh)
 echo "Done"
 echo
 
-# Then copy the executable file "bminus" to the tests folder.
-cp "$T1/bminus" $tests
+# Then copy the executable file "blite" to the tests folder.
+cp "$T1/blite" $tests
 
 cd "$tests$inputs"
 mytests=$(ls)
@@ -50,6 +50,6 @@ done
 echo
 echo "Done"
 
-rm "$T1/bminus" 
+rm "$T1/blite" 
 cd "$T1"
 
