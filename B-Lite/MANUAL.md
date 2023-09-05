@@ -80,16 +80,18 @@ Uma constante do tipo string é uma sequência de caracteres entre aspas duplas,
 terminada por NULL e que não pode ser modificada.
 
 Uma string pode conter os seguintes códigos de ```\''':
-```\n``` indica avanço de linha (valor ASCII 10), 
-```\0``` indica NULL (valor ASCII zero) e 
-uma barra invertida seguida por qualquer outra coisa indica 
-exatamente o caractere que a segue. 
-Uma string  pode ter até 256 caracteres.
-Uma string não pode ter mais de uma linha. 
+```\n```, indica avanço de linha (valor ASCII 10) e ```\0```, indica NULL (valor ASCII zero). 
+Uma barra invertida seguida por outro caracter representa o caractere que a segue. 
+Uma string pode ter até 256 caracteres.
+Uma string não pode ser iniciada em uma linha e fechada em outra, por exemplo:
+```
+"hello
+hello"
+```
 
 ### 6. Erros Léxicos
 
-- caractere inválido 
+- símbolo desconhecido
 - string mal-formada
 
 ### Exemplos
@@ -104,7 +106,7 @@ s: string  = "hello world\n";
 ```
 x: integer = 65;
 y: boolean = true;
-if(x?y) ... etc. // caractere inválido
+if(x?y) ... etc. // símbolo desconhecido
 ```
 
 ```
@@ -115,10 +117,13 @@ if(f<100) ...  etc.
 ```
 writenum: function void ( b: integer );
 a: integer = 99;
+s: string  = "hello world; // string mal-formada
 writenum(a); 
 ```
 
 ```
+s: string  = "hello 
+              world";  // string mal-formada
 main: function integer () = {
     i: integer = 10;
     while (i > 0) ... etc.  
