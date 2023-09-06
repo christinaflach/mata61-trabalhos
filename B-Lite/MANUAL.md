@@ -74,12 +74,12 @@ Uma constante inteira é uma sequência não-vazia de dígitos decimais.
 
 Há duas constantes válidas para o tipo ```boolean```: ```false``` e ```true```.
 
-#### Tipo ```string'''
+#### Tipo ```string```
 
 Uma constante do tipo string é uma sequência de caracteres entre aspas duplas,
 terminada por NULL e que não pode ser modificada.
 
-Uma string pode conter os seguintes códigos de ```\''':
+Uma string pode conter os seguintes códigos de ```\```:
 ```\n```, indica avanço de linha (valor ASCII 10) e ```\0```, indica NULL (valor ASCII zero). 
 Uma barra invertida seguida por outro caracter representa o caractere que a segue. 
 Uma string pode ter até 256 caracteres.
