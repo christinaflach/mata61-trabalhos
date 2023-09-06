@@ -27,6 +27,7 @@ echo
 # Then copy the executable file "blite" to the tests folder.
 cp "$T1/blite" $tests
 
+# Get the tests in folder inputs
 cd "$tests$inputs"
 mytests=$(ls)
 cd "$tests"

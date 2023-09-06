@@ -11,7 +11,7 @@ cd src
 bison -d blite.y
 
 # rename file 
-mv blite.tab.h token.h
+# mv blite.tab.h token.h
 
 flex blite.l           
 
