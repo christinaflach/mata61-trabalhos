@@ -10,12 +10,9 @@ T1=$(pwd)
 cd src
 bison -d blite.y
 
-# rename file 
-# mv blite.tab.h token.h
-
 flex blite.l           
 
-cc -o bminus lex.yy.c blite.tab.c main.c
+cc -o blite lex.yy.c blite.tab.c main.c
 
 # change blite to exec and move it to T1
 chmod +x blite
@@ -23,7 +20,7 @@ mv blite "$T1"
 
 # clean
 rm lex.yy.c
-rm blite.tab.c
+rm blite.tab.*
 
 # back to T1
 cd "$T1"

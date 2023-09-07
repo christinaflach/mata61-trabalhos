@@ -32,13 +32,20 @@ cd "$tests$inputs"
 mytests=$(ls)
 cd "$tests"
 
+if [ -d "$tests$outputs" ] ; then
+   echo "- Directory $tests$outputs exists."
+   echo
+else
+   mkdir $tests$outputs
+fi
+
 echo "- Running tests ..."
 echo "Number of test cases: `total_files "$tests$inputs"`"
 
 for t in $mytests; do
     name="$(basename $t .bm).out"
     echo "Running $t ..."
-    ./bminus "$tests$inputs$t"  "$tests$outputs$name"
+    ./blite "$tests$inputs$t"  "$tests$outputs$name"
     n1=`diff -bB -iw "$tests$outputs$name" "$tests$oracle$name" | grep "^>" | wc -l`
     n2=`diff -bB -iw "$tests$outputs$name" "$tests$oracle$name" | grep "^<" | wc -l`
     if [[ $n1 -eq 0 ]] && [[ $n2 -eq 0 ]] ; then
@@ -51,6 +58,7 @@ done
 echo
 echo "Done"
 
+rm "$tests/blite" 
 rm "$T1/blite" 
 cd "$T1"
 

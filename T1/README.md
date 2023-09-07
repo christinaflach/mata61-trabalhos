@@ -51,7 +51,7 @@ main: function integer () =
     read(a);
     if (a <= 0) 
        a = 1;
-    print(a);
+    print("saida: ",a);
 }
 ```
  
@@ -103,6 +103,8 @@ a saída gerada em _main.out_ será:
 (7,SYM,";")
 (8,KEY,"print")
 (8,SYM,"(")
+(8,STR,""saida: "")
+(8,SYM,",")
 (8,ID,"a")
 (8,SYM,")")
 (8,SYM,";")
@@ -116,19 +118,19 @@ O programa _blite_ deve ler a entrada a partir de um arquivo
 com extensão _.bm_ e escrever a saída em outro arquivo,
 preferencialmente com extensão _.out_.
 
-Use o script ```run.sh``` para  executar _bminus_ passando apenas
+Use o script ```run.sh``` para  executar _blite_ passando apenas
 o nome do arquivo de entrada _.bm_. A saída será gerada em 
 um arquivo com o mesmo nome e extensão  _.out_.
 
 ```
-$ ./run.sh main.bm    # cria main.out
+$ ./run.sh exemplo.bm    # cria exemplo.out
 ```
 
 Para executar _blite_ sem o script, fornecer 
-os nomes dos arquivos, de entrada e de saída, explicitamente:
+os nomes dos arquivos de entrada e de saída, explicitamente:
 
 ```
-$ ./bison main.bm a.out
+$ ./bison exemplo.bm exemplo.out
 ```
 
 ## Como testar
@@ -148,26 +150,25 @@ O repositório tem duas pastas, ```src``` e ```tests```.
 A pasta _tests_ contém arquivos _.bm_ com programas em BLite.
 
 Os arquivos na pasta _src_ são 
-```blite.l```, ```blite.y```, ```token.h```  e ```main.c```. 
+```blite.l```, ```blite.y``` e ```main.c```. 
 Idealmente, você só deve modificar _blite.l_ 
 para especificar seus padrões regulares e ações para
-a análise léxica de  programas _BLite_.
-_Não_ incluir outros arquivos na pasta _src_.
+a análise léxica de  programas _BLite_ e, em seguida,
+rodar ```run_tests.sh```.
 
+_Não_ incluir outros arquivos na pasta _src_.
 
 A entrega deverá ser feita em duas etapas:
 
 - Entrega parcial (7 dias) 
 
 Para acompanhamento: Subir uma versão incompleta de blite.l
-com especificação de padrões e ações para 
-desconsiderar caracteres de espacejamento e comentários,
-e para reconhecer 
-de identificadores e números.
+com especificação de padrões e ações para desconsiderar caracteres 
+de espacejamento e comentários, e para reconhecer 
+identificadores (ID) e números (NUM).
 
 - Entrega final (15 dias) 
 
-Subir a versão completa do programa flex para BLite com todos
-padrões e ações implementados. 
-
+Subir a versão completa do programa flex para BLite (```blite.l```)
+com todos os padrões regulares e ações implementados. 
 
