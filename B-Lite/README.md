@@ -2,7 +2,6 @@
 
 
 + Aspectos Léxicos
-
-
++ Aspectos Sintáticos
 
 

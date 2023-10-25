@@ -2,11 +2,15 @@
 
 A linguagem B-Lite é uma linguagem de programação adaptada da linguagem B- (usada para o ensino de compiladores em cursos de graduação). 
 
-B-Lite inclui expressões, fluxo de controle básico, funções recursivas e 
-verificação de tipos. O código-objeto é compatível com C e, portanto, 
+B-Lite inclui expressões, fluxo de controle básico, 
+funções recursivas e verificação de tipos. 
+O código-objeto é compatível com C e, portanto, 
 algumas bibliotecas C padrão podem ser usadas para os tipos definidos na linguagem.
 
-Descreveremos a linguagem através de exemplos, deixando para você ler com atenção, fazer perguntas no Fórum e então extrair as especificações formais necessárias para desenvolver os trabalhos do curso.
+Descreveremos a linguagem através de exemplos, 
+deixando para você ler com atenção, 
+fazer perguntas no Fórum e então extrair 
+as especificações formais necessárias para desenvolver os trabalhos do curso.
 
 ## Aspectos Léxicos
 
@@ -20,7 +24,7 @@ e devem ser desconsiderados pelo analisador léxico.
 ### 2. Comentários de uma linha
 
 Comentários de uma linha (_single-line comments_) sempre são iniciados por ```//``` e se estendem até o final da linha.
-Comentários devem ser desconsiderados.
+Comentários devem ser desconsiderados na análise léxica.
 
 - Exemplo: ```a=5; // comentário no estilo C++```
 
@@ -106,12 +110,12 @@ s: string  = "hello world\n";
 ```
 x: integer = 65;
 y: boolean = true;
-if(x?y) ... etc. // símbolo desconhecido
+if(x?y) { ... } // símbolo desconhecido
 ```
 
 ```
 f: integer = 0;
-if(f<100) ...  etc.
+if(f<100) { print f; }
 ```
 
 ```
@@ -126,8 +130,120 @@ s: string  = "hello
               world";  // string mal-formada
 main: function integer () = {
     i: integer = 10;
-    while (i > 0) ... etc.  
+    while (i > 0) ... 
 }
 ```
 
+## Aspectos Sintáticos
 
+Um programa B-lite é uma sequência de declarações,
+sendo que cada declaração pode ser declaração de uma função ou declaração de uma variável.
+
+Em B-lite, podemos declarar variáveis globais com inicialização opcional,
+e funções.
+Em uma função, pode-se declarar variáveis locais, com inicialização opcional.
+Dentro da função não se pode declarar outra função,
+ou seja, declarações de função não podem ser aninhadas.
+
+No corpo de uma função, comandos básicos incluem 
+expressões aritméticas, comandos return, if, if-else, while, print, 
+ou bloco de código entre chaves '{' e '}'.
+Pode-se declarar variáveis locais em um bloco.
+O comando print não é considerado como chamada de função.
+A palavra reservada "print" é seguida por 0 ou mais argumentos do tipo "integer" ou do tipo "string", separados por ','.
+
+Comandos básicos são seguidos por ";"
+
+### Declaração de variável 
+
+- Uma declaração de variável consiste de um identificador, seguido por ':', pelo seu tipo e por ';'.
+O tipo pode ser integer ou boolean ou string.
+- A variável pode ser inicializada na declaração; nesse caso, o tipo declarado 
+será seguido por '=', por um valor (do tipo integer ou boolean ou string) e por ';'.
+
+#### Exemplos
+
+```
+x: boolean;
+y: integer = 123;
+z: boolean = false;
+a: string;
+b: string = "tipos";
+```
+
+### Declaração de função
+
+- Uma declaração de função em B-lite começa pelo seu nome,
+seguido por ':', seguido pela palavra-chave FUNCTION, pelo tipo (ou "void"),
+por uma lista de parâmetros entre '(' e '), o símbolo '=' e, por fim,
+a declaração de um bloco de código. 
+- A função pode ter tipo integer ou boolean ou string, ou "void" (sinaliza que a função não retorna valor).
+- A lista de parâmetros pode ser vazia, ou conter um ou mais parâmetros separados por ','
+- Um parâmetro pode ser do tipo integer, boolean ou array.
+- A declaração de um parâmetro é similar a declaração de variável.
+- Parâmetros não podem ser inicializados na declaração da função.
+
+```
+square: function integer ( x: integer ) = {
+    return x*x;
+}
+```
+
+```
+printpair: function void
+ (a: integer, b: integer) = {
+    print "(", a, ","); 
+    print b;
+    print ")\n"; 
+} 
+
+```
+
+### Declaração de bloco
+
+Um bloco é um trecho de código entre chaves '{' e '}'.
+O trecho de código B-lite pode incluir declarações de variáveis locais 
+e comandos.
+
+### Comandos
+
+Comandos básicos em B-lite incluem
+expressões, comandos return, print, if, if-else, while.
+_Comando composto_ é uma sequência de comandos básicos separados por ';'.
+O comando print não é considerado como chamada de função. Pode receber argumentos do tipo integer ou string, separados por vírgula ','.
+
+### Expressões
+
+B-lite possui vários operadores aritméticos encontrados na linguagem C, com o mesmo significado, associatividade e nível de precedência.
+A seguir, listamos os operadores de B-lite, da maior para a menor precedência.
+
+
+```
+f()              // chamada de função
+- !              // negação, not
+* / %            // multiplicação, divisão inteira, resto
++ -              // adição, subtração
+< <= > >= == !=  // comparação
+&& ||            // e lógico, ou lógico
+=                // atribuição
+
+```
+
+### Exemplo
+
+```
+// main.bm
+main: function integer () =
+{
+    a: integer;
+    read(a);
+    if (a <= 0) 
+       a = 1;
+    print "saida: ", a, "\n";
+}
+
+```
+
+## Aspectos Semânticos 
+
+TBD.
