@@ -36,9 +36,10 @@ Recomendamos fortemente que os exercícios E2, E7 e E8 sejam resolvidos antes de
 ## Analisador sintático em Bison
 
 O analisador sintático para B-lite deverá ser desenvolvido com Bison, 
-com base na [especificação sintática](./blite/MANUAL.md) da linguagem
+com base na [especificação sintática](../B-Lite/MANUAL.md) da linguagem
 e integrado com o analisador léxico 
-desenvolvido com Flex no T1. O código do blite.l (T1) deverá ser usado
+desenvolvido com Flex no T1. 
+O código do blite.l (T1) deverá ser copiado para a pasta e usado
 como ponto de partida para T2-T3, com as seguintes alterações:
 
 - Indicar tokens mais específicos, por exemplo, TOKEN_IF ou TOKEN_WHILE, ao invés de "KEY", ou TOKEN_PLUS, TOKEN_MULT, etc., ao invés de "SYM";
@@ -163,9 +164,10 @@ trabalhando em conjunto com o analisador léxico modificado.
 
 Por fim, 
 compilar e gerar o executável chamado de _blite_. 
-As funções para criação e manipulação da AST estão nos arquivos _ast.c_ e _ast.h_.
-A função _main_ chama a função _printAST_
-para geração de saída no formato _labelled bracket_.
+As funções para criação e manipulação da AST deverão estar em  arquivos separados,
+por exemplo,_ast.c_ e _ast.h_.
+A função _main_ deve chamar uma função _printAST_
+para geração de saída no formato _labelled bracket_ a partir da raiz da AST.
 A função _main_ está definida em um arquivo C chamado de _main.c_.
 
 O arquivo _makefile_ contém instruções para compilar os arquivos 
@@ -186,7 +188,39 @@ sendo que o arquivo _nome.bm_ contém o programa-fonte em B-lite
 e _nome.out_ contém a AST para o programa-fonte 
 representada na notação _labelled bracket_.
 
-## Exemplo 1 
+## Exemplo simples
+
+### Entrada
+
+```
+min: integer;
+color: integer;
+main: void () {
+   min = 1;
+   color = 0; // red
+}
+```
+
+### Saída
+
+```
+[program
+  [var-declaration [integer][min]]
+  [var-declaration [integer][color]]
+  [fun-declaration
+    [void]
+    [main]
+    [params]
+    [compound-stmt
+       [= [var [min]] [1]]
+       [= [var [color]] [0]]
+     ]
+   ]
+]
+```
+
+
+## Outro exemplo  
 ### Arquivo de entrada exemplo.bm
 (programa sintaticamente correto.)
 
@@ -275,39 +309,9 @@ Importante: Caracteres de espacejamento serão ignorados na correção automáti
 
 ![AST](./figs/ast_rsyntax.png)
 
-## Outro Exemplo
-### Entrada 
-
-```
-min: integer;
-color: integer;
-main: void () {
-   min = 1;
-   color = 0; // red
-}
-```
-
-### Saída
-
-```
-[program
-  [var-declaration [integer][min]]
-  [var-declaration [integer][color]]
-  [fun-declaration
-    [void]
-    [main]
-    [params]
-    [compound-stmt
-       [= [var [min]] [1]]
-       [= [var [color]] [0]]
-     ]
-   ]
-]
-```
-
 ## Correção Automática
 
-A correção automática do trabalho T2 será feita com o apoio de _scripts_.
+A correção automática do trabalho T2-T3 será feita com o apoio de _scripts_.
 Desse modo, a correção irá considerar apenas os arquivos colocados 
 no repositório GitHub da equipe,
 com os nomes de arquivos indicados na especificação do trabalho.
