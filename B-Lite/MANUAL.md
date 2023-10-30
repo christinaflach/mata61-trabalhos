@@ -136,23 +136,20 @@ main: function integer () = {
 
 ## Aspectos Sintáticos
 
-Um programa B-lite é uma sequência de declarações,
-sendo que cada declaração pode ser declaração de uma função ou declaração de uma variável.
+Um programa B-lite é uma sequência de declarações, sendo que cada declaração pode ser uma declaração de função ou uma declaração de variável. 
+No programa, podemos declarar variáveis (globais) e funções.
+Em uma função, podemos declarar variáveis (locais), mas não funções.
 
-Em B-lite, podemos declarar variáveis globais com inicialização opcional,
-e funções.
-Em uma função, pode-se declarar variáveis locais, com inicialização opcional.
-Dentro da função não se pode declarar outra função,
-ou seja, declarações de função não podem ser aninhadas.
+No corpo de uma função, além de declaração de variáveis (opcional),
+podemos definir comandos. 
+_Comandos básicos_ em B-lite incluem expressões, comandos return, 
+if, if-else, while e print. Comandos básicos são seguidos por ";"
 
-No corpo de uma função, comandos básicos incluem 
-expressões aritméticas, comandos return, if, if-else, while, print, 
-ou bloco de código entre chaves '{' e '}'.
+_Comandos compostos_ ou blocos de comandos são definidos entre chaves '{' e '}'.
+Um bloco define uma sequência de múltiplos comandos que são tratados como uma unidade. Permite que uma sequência de declarações seja tratada como se fossem uma única declaração. 
 Pode-se declarar variáveis locais em um bloco.
 O comando print não é considerado como chamada de função.
 A palavra reservada "print" é seguida por 0 ou mais argumentos do tipo "integer" ou do tipo "string", separados por ','.
-
-Comandos básicos são seguidos por ";"
 
 ### Declaração de variável 
 
