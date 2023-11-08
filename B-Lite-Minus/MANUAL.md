@@ -3,14 +3,14 @@
 Subconjunto da linguagem B-Lite para o trabalho.
 
 + [Aspectos Léxicos](#aspectos-lexicos)
-+ [Aspectos Sintáticos](./MANUAL.md)
++ [Aspectos Sintáticos](#aspectos-sintaticos)
 + Aspectos Semânticos
 
 A linguagem B-Lite-Minus é uma linguagem de programação adaptada da linguagem B- (usada para o ensino de compiladores em cursos de graduação). 
 
 Esta versão inclui expressões inteiras e booleanas, fluxo de controle básicoe funções recursivas.
 
-## Aspectos Léxicos {#aspectos-lexicos}
+## Aspectos Léxicos
 
 ### 1. Caracteres de espacejamento (_whitespace_)
 
