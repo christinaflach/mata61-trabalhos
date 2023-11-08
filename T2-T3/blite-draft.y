@@ -1,31 +1,16 @@
 
 /* Tipos permitidos para ATRIBUTOS de símbolos terminais e não terminais */
-%union{
-   int d;
-   ...
-   struct decl *decl;
-   struct stmt *stmt;
-   struct expr *expr;
-} ...
-
-
 
 %token VOID
 %token PLUS
-%token <d> NUMBER
-
-/* etc */
-
-%type <decl> declaration func-declaration etc. 
-%type <stmt> statement if-statement etc.
-%type <expr> expression term etc.
+%token NUMBER
 
 /* etc */
 
 %%
 
 program
-: declarations { return (struct decl *) 0; } /* só para ilustrar desenvolvimento incremental */
+: declarations
 ; 
 
 declarations
@@ -34,8 +19,8 @@ declarations
 ;
 
 declaration
-: func-declaration { return (struct decl *) 0; } /* só para desenvolvimento incremental */
-| var-declaration { return (struct decl *) 0; }
+: func-declaration
+| var-declaration
 ;
 
 type
@@ -66,13 +51,14 @@ var-declaration etc.
 statements etc.
 
 statement
-: if_statement { return (struct stmt *) 0; } /* só para desenvolvimento incremental */
+: if_statement 
+| /* etc */
 ;
 
 expressions etc.
 
 expression
-: expression '+' term { acoes ...} 
+: expression '+' term 
 | term
 ;
 

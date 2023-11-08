@@ -1,14 +1,14 @@
 # Projeto de um Compilador
 
-- Trabalhos 2 e 3 (T2-T3): Análise Sintática com Construção de AST. Construção de um analisador sintático bottom-up para B-lite que gera representação na forma de AST para programas válidos.
+- Trabalho T2-T3: Análise Sintática com Construção de AST. Construção de um analisador sintático bottom-up para B-lite que gera representação na forma de AST para programas válidos.
 
 Nesta parte do projeto, você irá implementar um analisador sintático 
-_bottom-up_ para a [linguagem B-lite](./B-lite) com
+_bottom-up_ para a [linguagem B-lite](../B-lite/MANUAL.md) com
 construção da árvore sintática abstrata (AST - Abstract Syntax Tree) para 
 programas B-Lite corretos.
 O trabalho T2-T3 inclui a implementação de um analisador sintático, construído com a ferramenta _Bison_, 
 funções auxiliares para a construção da AST durante o processo de análise, 
-uma função de _prettyprint_ para gerar uma representação externa para AST 
+uma função de _printAST_ para gerar uma representação externa para AST 
 e o programa principal (detalhes a seguir).
 
 <img src="./figs/ast-parsetree.png" width="400">
@@ -28,24 +28,41 @@ _labelled bracketing_ para a AST retornada
 
 Antes de iniciar a implementação do T2-T3 em equipe, 
 recomendamos a leitura dos capítulos 5 e 6 do livro 
-"Introduction to Compilers and Language Design" de Douglas Thain.
+"Introduction to Compilers and Language Design" de Douglas Thain
+e o capítulo 3 do livro Flex&Bison.
 Apesar da sintaxe de B-lite ser um pouco diferente da usada no livro de Thain, 
 os exemplos de código e o material são úteis.
 Recomendamos fortemente que os exercícios E2, E7 e E8 sejam resolvidos antes de começar o trabalho T2-T3.
 
-## Analisador sintático em Bison
+## Analisador sintático em Bison com Construção de AST
 
 O analisador sintático para B-lite deverá ser desenvolvido com Bison, 
 com base na [especificação sintática](../B-Lite/MANUAL.md) da linguagem
 e integrado com o analisador léxico 
 desenvolvido com Flex no T1. 
-O código do blite.l (T1) deverá ser copiado para a pasta e usado
+
+### Passo 1: Construir e validar a gramática para B-Lite.
+
+Escrever um programa Bison com a gramática para B-Lite (blite.y).
+
+Este passo do T2-T3 também usará o arquivo main.c com uma função _main_ para chamar a função _yyparse()_ gerada pelo Bison. 
+
+
+### Passo 2: Adaptar analisador léxico para B-Lite.
+
+O código do blite.l (T1) deverá ser copiado para a pasta T2-T3 e usado
 como ponto de partida para T2-T3, com as seguintes alterações:
 
 - Indicar tokens mais específicos, por exemplo, TOKEN_IF ou TOKEN_WHILE, ao invés de "KEY", ou TOKEN_PLUS, TOKEN_MULT, etc., ao invés de "SYM";
-- Calcular o valor das constantes literais, por exemplo, NUMBER (tipo integer) com valor atribuído a yylval;
+- Calcular o valor das constantes literais, por exemplo, NUMBER (tipo integer) com valor atribuído a yylval. 
 
-### Notação para a Árvore Sintática Abstrata (Abstract Syntax Tree - AST)
+* Atenção: Ler sobre a variável yylval, YYSTYPE e %union no livro Flex&Bison.
+
+### Passo 3: Construção da AST
+
+### Passo 4: Geração de representação externa para a AST
+
+#### Notação para a Árvore Sintática Abstrata (Abstract Syntax Tree - AST)
 
 Há diversas formas para representar árvores sintáticas corretas geradas para um programa sintaticamente válido.
 Em nosso projeto de compilador, é importante definir e usar um formato único para representar
@@ -53,7 +70,6 @@ a AST, que seja independente de qualquer linguagem específica, seja fonte ou ob
 
 Em nosso compilador, 
 o analisador sintático construirá uma AST para programas sem erros léxicos e sem erros sintáticos.
-O trabalho T2-T3 deve incluir uma função _main_ para chamar a função _yyparse()_ gerada pelo Bison. 
 Para mostrar a AST criada, 
 a função _main_ deve chamar a função _printAST_, tendo como argumento a raiz da AST,
 para percorrer e gerar uma representação da AST
