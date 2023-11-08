@@ -2,8 +2,8 @@
 
 Subconjunto da linguagem B-Lite para o trabalho.
 
-+ [Aspectos Léxicos](#aspectos-lexicos)
-+ [Aspectos Sintáticos](#aspectos-sintaticos)
++ [Aspectos Léxicos](#aspectos-léxicos)
++ [Aspectos Sintáticos](#aspectos-sintáticos)
 + Aspectos Semânticos
 
 A linguagem B-Lite-Minus é uma linguagem de programação adaptada da linguagem B- (usada para o ensino de compiladores em cursos de graduação). 
