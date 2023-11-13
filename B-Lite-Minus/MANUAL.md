@@ -1,4 +1,4 @@
-# B-Lite-Minus#aspectos-lexicos
+# B-Lite-Minus
 
 Subconjunto da linguagem B-Lite para o trabalho.
 
