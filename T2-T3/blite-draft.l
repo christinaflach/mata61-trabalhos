@@ -10,15 +10,14 @@
 void            { return VOID; }
 /* etc */
 
-/* ID pattern */ { yylval.name = strdup(yytext); return ID; }
-[0-9]+           { yylval.d = atoi(yytext); return NUMBER; }
+/* ID pattern */ { return ID; }
+[0-9]+           { return NUMBER; }
 
 "+"		 { return PLUS; }
-/* etc */
+/* etc. */
 
 "<="       	 { return LTE; }
 /* etc */
-
 
 "("   		 { return OPENP; }
 /* etc */
