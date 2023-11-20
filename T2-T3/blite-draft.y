@@ -1,6 +1,4 @@
 
-/* Tipos permitidos para ATRIBUTOS de símbolos terminais e não terminais */
-
 %token VOID
 %token PLUS
 %token NUMBER
@@ -55,7 +53,7 @@ statement
 | /* etc */
 ;
 
-expressions etc.
+expressions podem ser relacionais ou aritméticas, etc.
 
 expression
 : expression '+' term 
