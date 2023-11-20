@@ -174,6 +174,7 @@ printpair: function void
 isfoo: function boolean () = {
     return true;
 }
+```
 
 ### Bloco de código
 
@@ -222,19 +223,19 @@ O comando de seleção "if" pode ter um ou dois ramos.
 
 ```
 if (a > b) print a;
-
+```
+```
 if (a > b) 
   print a; 
 else 
   print b;
-
-
+```
+```
 if ((a+b) > c) { 
   print a; print b; 
 } 
 else
   if (c > 0) print c;
- 
 ```
 
 * while
@@ -258,7 +259,6 @@ Mas isso não precisa ser uma preocupação do analisador sintático.
 
 ```
 print a, b, a+b; 
-
 ```
 
 ### Expressões
@@ -288,6 +288,7 @@ a != b
 a < b < c  \\ erro sintático
 a = b = c  \\ erro sintático
 a = -b     \\ erro sintático
+```
 
 ```
 // main.bm
@@ -299,7 +300,6 @@ main: function integer () =
        a = 1;
     print a;
 }
-
 ```
 
 ## Aspectos Semânticos 
