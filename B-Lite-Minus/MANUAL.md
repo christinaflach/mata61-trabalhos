@@ -111,6 +111,7 @@ main: function integer () = {
     while (i > 0) ... 
 }
 ```
+---
 
 ## Aspectos Sintáticos
 
@@ -128,13 +129,12 @@ Opcionalmente, a variável pode ser inicializada em sua declaração. Nesse caso
 de um valor, com o símbolo '=' seguido por um valor constante
 de um tipo básico.
 
-
 ```
 w: integer;
 x: boolean;
 y: integer = 123;
 z: boolean = false;
-``
+```
 
 ### Declaração de função
 
@@ -229,7 +229,7 @@ else
   print b;
 
 
-if (a+b > c) { 
+if ((a+b) > c) { 
   print a; print b; 
 } 
 else
@@ -252,7 +252,7 @@ while (a > b) {
 
 O comando "print" pode receber um ou mais argumentos separados por vírgula ','. Argumentos são expressões válidas.
 
-* Observação sobre aspecto semântico: 
+* Observação sobre um aspecto semântico de B-lite-minus: 
 argumentos devem ser do tipo integer apenas. 
 Mas isso não precisa ser uma preocupação do analisador sintático.
 
@@ -287,6 +287,7 @@ f()              // chamada de função
 a != b
 a < b < c  \\ erro sintático
 a = b = c  \\ erro sintático
+a = -b     \\ erro sintático
 
 ```
 // main.bm
