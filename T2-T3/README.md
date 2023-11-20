@@ -4,7 +4,7 @@
 
 - Parte 1:
    - Adaptação do analisador léxico;
-   - Escrever programa Bison (só gramática, sem ações) para B-lite-Minus  [linguagem B-Lite-Minus](../B-Lite-Minus/MANUAL.md)
+   - Escrever programa Bison (só gramática, sem ações) para a linguagem [B-lite-Minus](../B-Lite-Minus/MANUAL.md)
 - Parte 2: A ser definido.
    - Inclusão de ações semânticas no analisador sintático para manipular árvore sintática abstrata (AST - Abstract Syntax Tree).
 
@@ -14,5 +14,3 @@ O trabalho T2-T3 completo inclui a implementação de um analisador sintático, 
 funções auxiliares para a construção da AST durante o processo de análise, 
 uma função de _printAST_ para gerar uma representação externa para AST 
 e o programa principal.
-
-
