@@ -282,6 +282,20 @@ f()              // chamada de função
 
 ```
 
+- Chamada de função
+```
+call
+: ID '(' args ')'
+| ID '(' ')'
+;
+
+args
+: expression
+| args ',' expression
+;
+
+```
+
 ### Exemplos
 ```
 a != b
