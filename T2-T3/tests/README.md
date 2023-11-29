@@ -1,5 +1,0 @@
-# README
-
-Testes em preparação.
-
-

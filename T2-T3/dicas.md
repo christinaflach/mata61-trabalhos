@@ -8,7 +8,7 @@
 
 ## Parte 2
 - Definir tipos de não-terminais e terminais no blite.y 
-(usar %union, %type, e revisar declaração de alguns tokens), sem uso de ações semânticas nas regras ainda. Olhar o livro do Flex & Bison;
+(usar %union, %type, e revisar declaração de alguns tokens), sem definir ações semânticas nas regras de produção ainda. Olhar o livro do Flex & Bison;
 - Revisar o blite.l (usar tipos para ALGUNS tokens), por exemplo, yylval.d para 
 token NUMBER, sendo _d_ do tipo _int_;
 - Desenvolver __incrementalmente__, em especial, as ações semânticas 
@@ -19,5 +19,7 @@ Explicações no video compartilhado - aula 30/10.
 Pensar sobre como dividir trabalho entre os membros da equipe e usar efetivamente o GitHub,
 controle de versões, commits, comentários sobre commits. Por exemplo, 
 pensar em uma estratégia para trabalhar em declaration e expression em paralelo. 
+
+
 
 

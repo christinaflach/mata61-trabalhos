@@ -4,13 +4,20 @@
 
 - Parte 1:
    - Adaptação do analisador léxico;
-   - Escrever programa Bison (só gramática, sem ações) para a linguagem [B-lite-Minus](../B-Lite-Minus/MANUAL.md)
-- Parte 2: A ser definido.
+   - Escrever programa Bison (só gramática, sem ações) para a linguagem [B-Lite-Minus](../B-Lite-Minus/MANUAL.md)
+- Parte 2: A ser definida.
    - Inclusão de ações semânticas no analisador sintático para manipular árvore sintática abstrata (AST - Abstract Syntax Tree).
 
 
+O trabalho T2-T3 *completo inclui*: as partes 1 e 2.
 
-O trabalho T2-T3 completo inclui a implementação de um analisador sintático, construído com a ferramenta _Bison_ (parte 1), 
-funções auxiliares para a construção da AST durante o processo de análise, 
-uma função de _printAST_ para gerar uma representação externa para AST 
-e o programa principal.
+
+## Entrega
+
+- Entrega (Parte 1): arquivos blite.l (modificado) e blite.y (programa Bison sem ações semânticas);
+- Entrega (Parte 2): arquivo blite.y com ações semânticas para construção da AST.
+Funções auxiliares para a construção da AST durante o processo de análise,
+e para gerar uma representação externa para AST serão fornecidas, bem como o programa main.c.
+
+
+

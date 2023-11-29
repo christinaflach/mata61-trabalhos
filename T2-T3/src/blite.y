@@ -1,3 +1,13 @@
+%{
+#include <stdio.h>
+#include <stdlib.h>
+
+/* interface to lexer */
+
+extern int yylineno; /* from lexer */
+void yyerror(const char *);
+int yylex();
+%}
 
 %token VOID
 %token PLUS
@@ -64,4 +74,7 @@ expression
 
 %%
 
+void yyerror(const char *s) {
+   fprintf(stdout, "%s\n", s);
+}
 
