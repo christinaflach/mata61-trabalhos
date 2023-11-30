@@ -123,7 +123,8 @@ ou uma declaração de função.
 
 ### Declaração de variável
 
-A declaração de uma variável consiste de um identificador, seguido pelo símbolo ':', pelo seu tipo básico e pelo símbolo';'.
+A declaração de uma variável consiste de 
+um identificador, seguido pelo símbolo ':', pelo seu tipo básico e pelo símbolo';'.
 Em B-Lite-Minus, tipos básicos são integer e boolean.
 Opcionalmente, a variável pode ser inicializada em sua declaração. Nesse caso, a declaração de variável incluirá a atribuição
 de um valor, com o símbolo '=' seguido por um valor constante
@@ -134,6 +135,7 @@ w: integer;
 x: boolean;
 y: integer = 123;
 z: boolean = false;
+a,b,c: integer;     // erro sintático: apenas uma variável por linha
 ```
 
 ### Declaração de função
@@ -176,6 +178,17 @@ isfoo: function boolean () = {
 }
 ```
 
+```
+isfoo: function boolean (x:integer) = {
+    isbar: function integer (a:integer) = {  // erro: funções não podem estar aninhadas.
+        return a*10;
+    }
+    print x;
+    return (isbar(x) > x*x);
+    
+}
+```
+
 ### Bloco de código
 
 Um bloco de código pode incluir declarações de variáveis 
@@ -185,11 +198,23 @@ Um bloco de código deve possuir ao menos um comando.
 
 ### Comandos
 
-Comandos (_statements_) válidos em B-Lite-Minus são: 
+Um comando (_statement_) válido em B-Lite-Minus pode ser: 
 atribuição, _return_, seleção (_if else_),
-iteração (_while_) e print.
+iteração (_while_), print, uma chamada de função ou  um bloco de código.
 
-O símbolo ";" sempre é usado no final de cada comando.
+O símbolo ";" sempre é usado no final de cada comando, exceto se for um bloco de código.
+
+```
+while (a > b) {
+   b = b + 1;
+   a = a - 2;
+} ;                // erro: ponto e vírgula não permitido após bloco de código.
+```
+
+```
+while (a > b)
+   b = b + 1;
+```
 
 * atribuição
 
@@ -212,6 +237,7 @@ O operador "=" não é associativo e não pode aparecer mais de uma vez no coman
 O comando "return" retorna o valor de uma expressão ou nenhum valor.
 
 ```
+return false;
 return (a * b);
 return square(a);
 return ;             // retorno sem valor
@@ -219,10 +245,13 @@ return ;             // retorno sem valor
 
 * if
 
-O comando de seleção "if" pode ter um ou dois ramos.
+O comando de seleção "if-else" seleciona um comando a depender do valor de uma expressão. 
+A expressão deve estar entre parênteses.
+A parte do "else" é opcional.
+
 
 ```
-if (a > b) print a;
+if (a > b) print a;   // sem "else"
 ```
 ```
 if (a > b) 
@@ -232,7 +261,8 @@ else
 ```
 ```
 if ((a+b) > c) { 
-  print a; print b; 
+  print a; 
+  print b; 
 } 
 else
   if (c > 0) print c;
@@ -240,7 +270,9 @@ else
 
 * while
 
-O comando de iteração "while".
+O comando de iteração "while" testa o valor de uma expressão e, enquanto a mesma for verdadeira,
+realiza comando(s) associados.
+A expressão deve estar entre parênteses.
 
 ```
 while (a > b) {
@@ -251,9 +283,11 @@ while (a > b) {
 
 * print
 
-O comando "print" pode receber um ou mais argumentos separados por vírgula ','. Argumentos são expressões válidas.
+O comando "print" pode receber um ou mais argumentos separados por vírgula ','. 
+Argumentos são expressões válidas.
+O "print" é tratado como comando diferenciado e não como chamada função.
 
-* Observação sobre um aspecto semântico de B-lite-minus: 
+* Observação sobre um aspecto semântico de B-Lite-Minus: 
 argumentos devem ser do tipo integer apenas. 
 Mas isso não precisa ser uma preocupação do analisador sintático.
 
@@ -261,11 +295,24 @@ Mas isso não precisa ser uma preocupação do analisador sintático.
 print a, b, a+b; 
 ```
 
+* chamada de função
+
+A chamada de função pode ser vista como um comando.
+Ela inclui o nome da função, seguido por uma lista de argumentos,
+_entre parênteses_. Argumentos são expressões válidas.
+A lista pode ser vazia. Se houver dois ou mais argumentos,
+eles devem ser separados por ','.
+
 ### Expressões
 
 Expressões são inteiras ou booleanas. Expressões válidas incluem 
 constantes inteiras ou booleanas, chamada de função, expressão entre
 parênteses, expressões aritméticas e relacionais.
+
+A chamada de função inclui o nome de uma função, seguido por uma lista de argumentos,
+_entre parênteses_. Argumentos são expressões válidas.
+A lista pode ser vazia. Se houver dois ou mais argumentos,
+eles devem ser separados por ','.
 
 B-Lite-Minus possui vários operadores aritméticos e operadores relacionais
 binários. Não há operadores unários.
@@ -291,14 +338,21 @@ a = -b     \\ erro sintático
 ```
 
 ```
+square: function integer ( x: integer ) = {
+    return x*x;
+}
+
 // main.bm
 main: function integer () =
 {
-    a: integer;
-    read(a);
-    if (a <= 0) 
-       a = 1;
-    print a;
+    ab_1: integer;
+    ab_2: integer;
+    read(ab_1);
+    read(ab_2);
+    if (square(ab_1) > ab_2*10) 
+       print ab_1;
+    else
+       print ab_2;
 }
 ```
 
