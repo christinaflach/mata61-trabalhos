@@ -72,6 +72,22 @@ expression
 
 /* etc. */
 
+factor
+: ID
+| NUMBER
+| call 
+/* etc */
+
+call
+: ID '(' args ')'
+| ID '(' ')'
+;
+
+args
+: expression
+| args ',' expression
+;
+
 %%
 
 void yyerror(const char *s) {
