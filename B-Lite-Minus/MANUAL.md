@@ -329,7 +329,8 @@ f()              // chamada de função
 
 ```
 
-- Chamada de função
+- Regras para chamada de função
+
 ```
 call
 : ID '(' args ')'
@@ -361,10 +362,10 @@ main: function integer () =
 {
     ab_1: integer;
     ab_2: integer;
-    read(ab_1);
+    read(ab_1);                 // chamada de função como comando
     read(ab_2);
-    if (square(ab_1) > ab_2*10) 
-       print ab_1;
+    if (square(ab_1) > ab_2*10) // chamada de função como expressão
+       print ab_1;              // comando print
     else
        print ab_2;
 }
